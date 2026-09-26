@@ -134,6 +134,25 @@ export function StarIcon({ filled, ...props }: IconProps & { filled?: boolean })
   );
 }
 
+export function BoltIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={15} height={15} fill="currentColor" {...props}>
+      <path d="M13 2 4.5 13.2c-.4.5 0 1.3.7 1.3H11l-1.3 8 8.8-11.5c.4-.5 0-1.3-.7-1.3H12l1-7.7z" />
+    </svg>
+  );
+}
+
+export function CartPlusIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={15} height={15} {...base} {...props}>
+      <path d="M3 4h2l2.2 11.2a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.8L20 8H6" />
+      <circle cx="9" cy="20" r="1.4" />
+      <circle cx="17" cy="20" r="1.4" />
+      <path d="M15 5.5h4M17 3.5v4" />
+    </svg>
+  );
+}
+
 export function WhatsAppIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 32 32" width={28} height={28} fill="currentColor" {...props}>

@@ -26,8 +26,8 @@ export const siteConfig = {
     tiktok: "https://tiktok.com",
   },
   contact: {
-    phone: "+880 1700-000000",
-    whatsapp: "+880 1700-000000",
+    phone: "+880 1876-892958",
+    whatsapp: "+880 1876-892958",
     email: "hello@noire-demo.com",
     address: "Gulshan Avenue, Dhaka, Bangladesh",
   },
@@ -39,9 +39,11 @@ export const siteConfig = {
  */
 export const whatsappConfig = {
   /** Number in international format without + or spaces, used for wa.me links */
-  number: "8801700000000",
+  number: "8801876892958",
+  /** Short label shown on the floating WhatsApp button */
+  label: "এই ধরনের সাইট তৈরি করতে এখনি মেসেজ দিন",
   message:
-    "আসসালামু আলাইকুম। আমি NOIRÉ Fashion Demo Website দেখে যোগাযোগ করছি। আমার ব্যবসার জন্য এমন একটি Website তৈরি করতে চাই।",
+    "আসসালামু আলাইকুম। আমি এই ধরনের একটি Website আমার ব্যবসার জন্য তৈরি করতে চাই। বিস্তারিত জানতে চাই।",
 };
 
 export function getWhatsappLink(): string {

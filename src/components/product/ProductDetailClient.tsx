@@ -13,11 +13,11 @@ import { Accordion } from "@/components/product/Accordion";
 import { Rating } from "@/components/product/Rating";
 import { PriceTag } from "@/components/product/PriceTag";
 import { DiscountBadge } from "@/components/product/DiscountBadge";
-import { HeartIcon } from "@/components/ui/Icons";
+import { HeartIcon, BoltIcon, CartPlusIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { useToast } from "@/context/ToastContext";
-import { siteConfig } from "@/config/site";
+import { siteConfig, getWhatsappLink } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 const stockLabel: Record<Product["stock"], { label: string; className: string }> = {
@@ -153,19 +153,31 @@ export function ProductDetailClient({ product }: { product: Product }) {
             type="button"
             disabled={outOfStock}
             onClick={handleAddToCart}
-            className="border border-neutral-900 px-6 py-4 text-sm font-medium uppercase tracking-wider text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white disabled:cursor-not-allowed disabled:border-neutral-300 disabled:text-neutral-400"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-900 px-6 py-4 text-sm font-semibold uppercase tracking-wider text-neutral-900 transition-all hover:bg-neutral-900 hover:text-white disabled:cursor-not-allowed disabled:border-neutral-300 disabled:text-neutral-400"
           >
+            <CartPlusIcon width={17} height={17} />
             Add to Cart
           </button>
           <button
             type="button"
             disabled={outOfStock}
             onClick={handleOrderNow}
-            className="bg-neutral-900 px-6 py-4 text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-neutral-700 disabled:cursor-not-allowed disabled:bg-neutral-300"
+            className="btn-gold inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold uppercase tracking-wider shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:cursor-not-allowed disabled:bg-none disabled:bg-neutral-300 disabled:text-neutral-500"
           >
+            <BoltIcon width={17} height={17} />
             Order Now
           </button>
         </div>
+
+        <a
+          href={getWhatsappLink()}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#25D366]/40 bg-[#25D366]/10 px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-[#128C3E] transition-colors hover:bg-[#25D366] hover:text-white"
+        >
+          <WhatsAppIcon width={20} height={20} />
+          WhatsApp এ অর্ডার করুন
+        </a>
 
         <div className="flex flex-col gap-1 border border-line bg-mist px-4 py-3 text-sm text-neutral-700">
           <span>

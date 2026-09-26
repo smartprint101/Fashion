@@ -47,8 +47,8 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b bg-white/95 backdrop-blur transition-shadow duration-300",
-        scrolled ? "border-line shadow-[0_1px_0_0_rgba(0,0,0,0.04)]" : "border-transparent"
+        "sticky top-0 z-50 border-b bg-white transition-shadow duration-300",
+        scrolled ? "border-line shadow-[0_2px_16px_-6px_rgba(0,0,0,0.12)]" : "border-line/60"
       )}
     >
       <Container>

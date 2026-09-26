@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import type { Product } from "@/types";
 import { PriceTag } from "@/components/product/PriceTag";
 import { DiscountBadge } from "@/components/product/DiscountBadge";
-import { HeartIcon } from "@/components/ui/Icons";
+import { HeartIcon, BoltIcon, CartPlusIcon } from "@/components/ui/Icons";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { useToast } from "@/context/ToastContext";
@@ -53,9 +53,9 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   }
 
   return (
-    <div className="group relative flex flex-col">
-      <Link href={`/product/${product.slug}`} className="relative block overflow-hidden bg-mist">
-        <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-100">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-line/70 bg-white p-2.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_18px_40px_-18px_rgba(20,20,20,0.28)]">
+      <Link href={`/product/${product.slug}`} className="relative block overflow-hidden rounded-xl bg-mist">
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-neutral-100">
           <Image
             src={product.images[0]}
             alt={product.name}
@@ -73,9 +73,9 @@ export function ProductCard({ product, priority = false }: { product: Product; p
               className="object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
             />
           )}
-          <div className="absolute left-2 top-2 flex flex-col gap-1.5">
+          <div className="absolute left-2.5 top-2.5 flex flex-col gap-1.5">
             {product.isNew && (
-              <span className="bg-white px-2 py-1 text-[10px] font-medium uppercase tracking-wider text-neutral-900">
+              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-emerald to-[#245640] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
                 New
               </span>
             )}
@@ -89,9 +89,12 @@ export function ProductCard({ product, priority = false }: { product: Product; p
               toggle(product.id);
               showToast(wishlisted ? "Removed from wishlist" : "Added to wishlist");
             }}
-            className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-neutral-800 shadow-sm transition-colors hover:bg-white"
+            className={cn(
+              "absolute right-2.5 top-2.5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-800 shadow-sm backdrop-blur transition-all hover:scale-110 hover:bg-white",
+              wishlisted && "text-rose"
+            )}
           >
-            <HeartIcon filled={wishlisted} className={cn(wishlisted && "text-neutral-900")} />
+            <HeartIcon filled={wishlisted} className={cn(wishlisted && "text-rose")} />
           </button>
           {outOfStock && (
             <div className="absolute inset-x-0 bottom-0 bg-neutral-900/85 py-1.5 text-center text-[11px] uppercase tracking-wider text-white">
@@ -101,9 +104,14 @@ export function ProductCard({ product, priority = false }: { product: Product; p
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col gap-2 pt-3">
+      <div className="flex flex-1 flex-col gap-2 px-1 pb-1 pt-3">
+        <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-accent">
+          {product.subcategory}
+        </span>
         <Link href={`/product/${product.slug}`}>
-          <h3 className="text-sm font-medium text-neutral-900 sm:text-base">{product.name}</h3>
+          <h3 className="text-sm font-medium text-neutral-900 transition-colors hover:text-accent sm:text-base">
+            {product.name}
+          </h3>
         </Link>
         <PriceTag price={product.price} previousPrice={product.previousPrice} size="sm" />
 
@@ -113,29 +121,31 @@ export function ProductCard({ product, priority = false }: { product: Product; p
               <span
                 key={c.name}
                 title={c.name}
-                className="h-3.5 w-3.5 rounded-full border border-neutral-300"
+                className="h-3.5 w-3.5 rounded-full border border-neutral-300 ring-1 ring-inset ring-white"
                 style={{ backgroundColor: c.hex }}
               />
             ))}
           </div>
         )}
 
-        <div className="mt-1 grid grid-cols-2 gap-2">
+        <div className="mt-auto grid grid-cols-2 gap-2 pt-2">
           <button
             type="button"
             disabled={outOfStock}
             onClick={handleAddToCart}
-            className="border border-neutral-900 px-2 py-2 text-[11px] font-medium uppercase tracking-wider text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white disabled:cursor-not-allowed disabled:border-neutral-300 disabled:text-neutral-400 disabled:hover:bg-transparent"
+            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-neutral-900 px-2 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-neutral-900 transition-all hover:bg-neutral-900 hover:text-white disabled:cursor-not-allowed disabled:border-neutral-300 disabled:text-neutral-400 disabled:hover:bg-transparent"
           >
-            Add to Cart
+            <CartPlusIcon />
+            <span>Cart</span>
           </button>
           <button
             type="button"
             disabled={outOfStock}
             onClick={handleOrderNow}
-            className="bg-neutral-900 px-2 py-2 text-[11px] font-medium uppercase tracking-wider text-white transition-colors hover:bg-neutral-700 disabled:cursor-not-allowed disabled:bg-neutral-300"
+            className="btn-gold inline-flex items-center justify-center gap-1.5 rounded-full px-2 py-2.5 text-[11px] font-bold uppercase tracking-wider shadow-sm transition-all hover:shadow-md disabled:cursor-not-allowed disabled:bg-none disabled:bg-neutral-300 disabled:text-neutral-500"
           >
-            Order Now
+            <BoltIcon />
+            Order
           </button>
         </div>
       </div>
