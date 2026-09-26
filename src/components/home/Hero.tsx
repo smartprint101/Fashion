@@ -16,18 +16,18 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/10 to-transparent" />
       <Container className="relative z-10 pb-14 pt-32 sm:pb-20">
         <div className="max-w-xl animate-fade-in-up text-white">
-          <span className="text-xs font-medium uppercase tracking-[0.35em] text-white/80">
-            New Season
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold ring-1 ring-white/20 backdrop-blur">
+            New Season 2026
           </span>
-          <h1 className="font-display mt-4 text-4xl font-medium leading-[1.1] tracking-tight sm:text-6xl">
-            Elevate Your Everyday Style
+          <h1 className="font-display mt-5 text-4xl font-medium leading-[1.1] tracking-tight sm:text-6xl">
+            Elevate Your <span className="text-gradient-gold">Everyday</span> Style
           </h1>
           <p className="mt-5 max-w-md text-sm text-white/85 sm:text-base">
             Discover thoughtfully selected fashion pieces designed for modern
             everyday living.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <LinkButton href="/women" variant="secondary" size="lg">
+            <LinkButton href="/women" variant="gold" size="lg">
               Shop Women
             </LinkButton>
             <LinkButton

@@ -8,7 +8,12 @@
   --color-mist: #f5f4f2;
   --color-stone: #e7e5e1;
   --color-line: #dedbd5;
-  --color-accent: #7a6a53;
+  --color-accent: #a9884e;
+  --color-gold: #c9a24b;
+  --color-gold-dark: #9c7a3c;
+  --color-plum: #6d2f4d;
+  --color-rose: #b8455f;
+  --color-emerald: #2f6b52;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-serif: Georgia, "Times New Roman", "Noto Serif", serif;
@@ -90,6 +95,64 @@ body {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* WhatsApp floating button — premium pulse + label */
+@keyframes wa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.wa-pulse {
+  animation: wa-pulse 2.2s infinite;
+}
+
+@keyframes wa-label-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wa-label-in {
+  animation: wa-label-in 0.5s ease both;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Premium gradient CTA */
+.btn-gold {
+  background-image: linear-gradient(120deg, #d8b25e 0%, #c9a24b 45%, #9c7a3c 100%);
+  color: #1c1608;
+}
+
+.btn-gold:hover {
+  background-image: linear-gradient(120deg, #e0bd6d 0%, #d0ac57 45%, #a9884e 100%);
+}
+
+.text-gradient-gold {
+  background-image: linear-gradient(120deg, #c9a24b, #9c7a3c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Custom slim scrollbar for horizontal filter/gallery rows */

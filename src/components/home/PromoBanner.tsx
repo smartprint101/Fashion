@@ -23,7 +23,7 @@ export function PromoBanner() {
               <p className="mt-4 max-w-sm text-sm text-white/85 sm:text-base">
                 Curated fashion designed to fit your everyday life.
               </p>
-              <LinkButton href="/collections" variant="secondary" size="lg" className="mt-8">
+              <LinkButton href="/collections" variant="gold" size="lg" className="mt-8">
                 Explore Collection
               </LinkButton>
             </div>
